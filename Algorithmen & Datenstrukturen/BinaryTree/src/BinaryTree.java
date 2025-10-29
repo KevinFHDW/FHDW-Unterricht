@@ -109,4 +109,12 @@ throw new IllegalArgumentException("Tree contains a node with key " + key);
                 return right_height + 1;
         }
     }
+    public Node getMax() {
+        if (root == null)
+            return null;
+        Node cn = root;
+        while(cn.right != null)
+            cn = cn.right;
+        return cn;
+    }
 }
