@@ -16,6 +16,9 @@ public class Programm {
         Integer [] a = new Integer[MAXM];
         long start, elapsed;
 
+        Character[] liste = mHash("SEARCHXMPL");
+        System.out.println(liste);
+        /**
         System.out.println("Start der Sortieralgorithmen mit " + a.length + " Elementen");
 
         init(a);
@@ -62,13 +65,36 @@ public class Programm {
         ShellSort(p);
         elapsed = System.currentTimeMillis() - start;
         System.out.println("ShellSort Klassen - Zeit in Millisekunden: " + elapsed);
- 
-    } 
-    
+ */
+    }
+
+    private static Character[] mHash(String s) {
+        int m = s.length();
+        Character[] liste = new Character[m];
+        int bonus = 0;
+
+        for(int i = 0 ; i < m ; ++i){
+
+            int index = ((s.charAt(i) * i) + bonus) % m;
+
+            if(liste[index] == null){
+                bonus++;
+                i--;
+                System.out.println(i);
+            }else{
+                liste[index] = s.charAt(index);
+                bonus = 0;
+            }
+
+        }
+
+        return liste;
+    }
+
     private static void init(Integer [] a) {
         for (int i = 0; i < a.length; ++i) {
-        //    a[i] = (int)(Math.random()*1000000);
-            a[i] =  a.length - i;
+           a[i] = (int)(Math.random()*1000000);
+            //a[i] =  a.length - i;
         }
     }
     
